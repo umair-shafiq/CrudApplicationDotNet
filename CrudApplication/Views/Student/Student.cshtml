@@ -1,0 +1,57 @@
+﻿@model CrudApplication.Context.student
+
+
+@{
+    ViewBag.Title = "Student";
+}
+
+<style>
+    .error{
+        color: red;
+    }
+</style>
+
+<h2>Student</h2>
+
+@using (Html.BeginForm("AddStudent", "Student" , FormMethod.Post))
+{
+<div class="container">
+    <div class="form-group">
+        @Html.HiddenFor(x=>x.ID)
+        <label>Name</label>
+        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "error"})
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Father Name</label>
+        @Html.ValidationMessageFor(x => x.Fname, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.Fname, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Email</label>
+        @Html.ValidationMessageFor(x => x.Email, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Mobile</label>
+        @Html.ValidationMessageFor(x => x.Mobile, "", new { @class = "error" })
+        @Html.TextBoxFor(x => x.Mobile, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Description</label>
+        @Html.ValidationMessageFor(x => x.Description, "", new { @class = "error" })
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @rows = "10" })
+    </div>
+
+    <div class="form-group">
+       <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-warning">Reset</button>
+    </div>
+
+</div>
+}
+

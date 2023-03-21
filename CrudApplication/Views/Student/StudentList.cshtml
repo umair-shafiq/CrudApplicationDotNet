@@ -1,0 +1,35 @@
+﻿@model List<CrudApplication.Context.student>
+
+@{
+    ViewBag.Title = "StudentList";
+}
+
+<h2>StudentList</h2>
+
+<table class="table table-hover">
+    <tr>
+        <th>Name</th>
+        <th>Father Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.Name</td>
+    <td>@item.Fname</td>
+    <td>@item.Email</td>
+    <td>@item.Mobile</td>
+    <td>@item.Description</td>
+    <td>
+        <a href="@Url.Action("Student", new { item.ID, item.Name, item.Fname, item.Email, item.Mobile, item.Description})" class="btn btn-warning">Edit</a>
+        <a href="@Url.Action("Delete", new { @item.ID})" class="btn btn-danger">Delete</a>
+    </td>
+</tr>
+        }
+
+
+    </table>
